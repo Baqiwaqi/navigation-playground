@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "148816695945",
+    "project_id": "user-roles-25360",
+    "storage_bucket": "user-roles-25360.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148816695945:android:c414f492a7334804f42c58",
+        "android_client_info": {
+          "package_name": "com.example.user_roles"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148816695945-n6oot8l81c39leji9b11pe8ss3mbbo23.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9cxfhdprmnMuwVUxQNC9wlSFpDcgnQhY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148816695945-n6oot8l81c39leji9b11pe8ss3mbbo23.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
