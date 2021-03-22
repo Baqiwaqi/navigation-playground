@@ -6,8 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 //screens
 import 'package:user_roles/screens/authenticate/sign_in.dart';
 import 'package:user_roles/screens/dashboard/adminonly.dart';
-//dashboard versions
-import 'package:user_roles/screens/dashboard/dashboardv3.dart';
+
 //service
 import 'package:user_roles/service/authentication.dart';
 
@@ -17,7 +16,7 @@ class UserManagement {
         stream: AuthService().currenUserStream,
         builder: (BuildContext context, snapshot) {
           if (snapshot.hasData) {
-            return DashboardPageV3();
+           // return DashboardScreen(drawerItems: drawerItems, onTapped: onTapped)();
           }
           return SignIn();
         });

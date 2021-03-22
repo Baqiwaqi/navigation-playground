@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 //models
 import 'package:user_roles/models/listtile_model.dart';
 
-class NavigatorScreen extends StatelessWidget {
+class NavigationScreen extends StatelessWidget {
+  NavigationScreen({
+    Key key, 
+    @required this.item
+    }) : super(key: key);
+
   final ListModel item;
-
-  NavigatorScreen({Key key, @required this.item}) : super(key: key);
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
