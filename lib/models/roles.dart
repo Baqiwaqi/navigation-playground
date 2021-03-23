@@ -1,4 +1,3 @@
-import 'package:user_roles/models/userdata.dart';
 
 class Roles {
   final String role;

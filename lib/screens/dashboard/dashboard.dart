@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 //models
-import 'package:user_roles/models/listtile_model.dart';
+import 'package:user_roles/models/main_menu_model.dart';
 //screens
-import 'package:user_roles/screens/dashboard/navigation_screen.dart';
-import 'package:user_roles/screens/home/user_list.dart';
+import 'package:user_roles/screens/dashboard/user_information_list.dart';
 //service
 import 'package:user_roles/service/authentication.dart';
 
@@ -16,8 +15,8 @@ class Dashboard extends StatelessWidget {
     @required this.onTapped,
   });
   //navigator
-  final List<ListModel> drawerItems;
-  final ValueChanged<ListModel> onTapped;
+  final List<MainMenuModel> drawerItems;
+  final ValueChanged<MainMenuModel> onTapped;
   //firebase
   final uid = FirebaseAuth.instance.currentUser.uid;
   CollectionReference userCollection =

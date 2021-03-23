@@ -7,6 +7,7 @@ class NavigationInformationParser
   @override
   Future<NavigationRoutePath> parseRouteInformation(
       RouteInformation routeInformation) async {
+        
     final uri = Uri.parse(routeInformation.location);
     // Handle '/'
     if (uri.pathSegments.length == 0) {

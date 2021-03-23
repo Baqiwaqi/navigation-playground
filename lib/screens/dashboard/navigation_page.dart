@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //models
-import 'package:user_roles/models/listtile_model.dart';
+import 'package:user_roles/models/main_menu_model.dart';
 //dashboard
 import 'package:user_roles/screens/dashboard/navigation_screen.dart';
 
@@ -8,8 +8,8 @@ class NavigationPage extends Page {
   NavigationPage({
     @required this.item
     }) : super(key: ValueKey(item));
-
-  final ListModel item;
+  
+  final MainMenuModel item;
 
   // If you prefer, you can also extend Page to customize the behavior. 
   // For example, this page adds a custom transition animation

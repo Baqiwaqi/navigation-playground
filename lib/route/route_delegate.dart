@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //models
-import 'package:user_roles/models/listtile_model.dart';
+import 'package:user_roles/models/main_menu_model.dart';
+import 'package:user_roles/models/sub_menu_model.dart';
 //route
 import 'package:user_roles/route/route_path.dart';
 //screens
@@ -21,32 +22,47 @@ class NavigationRouterDelegate extends RouterDelegate<NavigationRoutePath>
   final GlobalKey<NavigatorState> navigatorKey;
 
   //  list of drawerItems and the selected drawerItem
-  ListModel _selectedDrawerItem;
+  MainMenuModel _selectedDrawerItem;
   bool show404 = false;
 
-  List<ListModel> drawerItems = [
-    ListModel(
+  List<MainMenuModel> drawerItems = [
+    MainMenuModel(
       icon: Icon(Icons.home),
       name: 'Home',
-      destination: 'home',
       role: [''],
     ),
-    ListModel(
+    MainMenuModel(
       icon: Icon(Icons.list),
       name: 'Admin',
-      destination: '',
       role: ['admin', 'supervisor'],
     ),
-    ListModel(
+    MainMenuModel(
       icon: Icon(Icons.person),
       name: 'Users only',
-      destination: '',
       role: ['admin', 'supervisor', 'operator'],
     ),
-    ListModel(
+    MainMenuModel(icon: Icon(Icons.fireplace_sharp), name: 'FireStore', role: [
+      ''
+    ], subMenu: [
+      SubMenuModel(
+        icon: Icon(Icons.loop),
+        name: 'data',
+        role: [''],
+      ),
+      SubMenuModel(
+        icon: Icon(Icons.battery_alert),
+        name: 'Indexes',
+        role: [''],
+      ),
+      SubMenuModel(
+        icon: Icon(Icons.import_export),
+        name: 'Import/Expport',
+        role: [''],
+      ),
+    ]),
+    MainMenuModel(
       icon: Icon(Icons.settings),
       name: 'Settings',
-      destination: '',
       role: [''],
     ),
   ];
@@ -63,7 +79,8 @@ class NavigationRouterDelegate extends RouterDelegate<NavigationRoutePath>
 
     return _selectedDrawerItem == null
         ? NavigationRoutePath.home()
-        : NavigationRoutePath.navigation(drawerItems.indexOf(_selectedDrawerItem));
+        : NavigationRoutePath.navigation(
+            drawerItems.indexOf(_selectedDrawerItem));
   }
 
   @override
@@ -73,6 +90,7 @@ class NavigationRouterDelegate extends RouterDelegate<NavigationRoutePath>
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Navigator(
+              // key: navigatorKey,
               pages: [
                 MaterialPage(
                   key: ValueKey('DashboardPage'),
@@ -84,14 +102,13 @@ class NavigationRouterDelegate extends RouterDelegate<NavigationRoutePath>
                 if (show404)
                   MaterialPage(
                       key: ValueKey('UnknownPage'), child: UnknownScreen())
-                else if (_selectedDrawerItem != null) 
+                else if (_selectedDrawerItem != null)
                   NavigationPage(item: _selectedDrawerItem)
               ],
               onPopPage: (route, result) {
                 if (!route.didPop(result)) {
                   return false;
                 }
-
                 //update the list of pages by setting _selectedBook to null
                 _selectedDrawerItem = null;
                 show404 = false;
@@ -105,9 +122,10 @@ class NavigationRouterDelegate extends RouterDelegate<NavigationRoutePath>
           return SignIn();
         });
   }
+
   // he _handleitemTapped method also needs to use notifyListeners
   // instead of setState
-  void _handleItemTapped(ListModel item) {
+  void _handleItemTapped(MainMenuModel item) {
     _selectedDrawerItem = item;
     notifyListeners();
   }
@@ -140,6 +158,4 @@ class NavigationRouterDelegate extends RouterDelegate<NavigationRoutePath>
 
     show404 = false;
   }
-
-  
 }
